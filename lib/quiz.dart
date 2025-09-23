@@ -25,7 +25,7 @@ class _QuizState extends State<Quiz> { // private class
   }
 
   void chooseAnswer(String answer) {
-    selectedAnswers.add(answer);// able to add more items as it does not reassign the list, depspite it being final
+    selectedAnswers.add(answer);
 
     if (selectedAnswers.length == questions.length) {
       setState(() {
