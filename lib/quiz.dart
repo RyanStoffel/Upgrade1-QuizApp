@@ -3,7 +3,7 @@ import 'package:quiz_app/start_screen.dart';
 import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/results_screen.dart';
-
+import 'package:quiz_app/theme.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -14,7 +14,8 @@ class Quiz extends StatefulWidget {
   }
 }
 
-class _QuizState extends State<Quiz> { // private class
+class _QuizState extends State<Quiz> {
+  // private class
   List<String> selectedAnswers = [];
   var activeScreen = 'start-screen'; // sets the new screen when called
 
@@ -29,14 +30,15 @@ class _QuizState extends State<Quiz> { // private class
 
     if (selectedAnswers.length == questions.length) {
       setState(() {
-         //selectedAnswers = []; // when you run out of questions, reset the selected answers back to empty to be able to meet this requirement again
+        //selectedAnswers = []; // when you run out of questions, reset the selected answers back to empty to be able to meet this requirement again
         activeScreen = 'results-screen';
       });
     }
   }
 
   void restartQuiz() {
-    setState(() { //sets the state of a fresh selected answers and screen back to question screen
+    setState(() {
+      //sets the state of a fresh selected answers and screen back to question screen
       selectedAnswers = [];
       activeScreen = 'questions-screen';
     });
@@ -47,9 +49,7 @@ class _QuizState extends State<Quiz> { // private class
     Widget screenWidget = StartScreen(switchScreen);
 
     if (activeScreen == 'questions-screen') {
-      screenWidget = QuestionsScreen(
-        onSelectAnswer: chooseAnswer,
-      );
+      screenWidget = QuestionsScreen(onSelectAnswer: chooseAnswer);
     }
 
     if (activeScreen == 'results-screen') {
@@ -63,14 +63,7 @@ class _QuizState extends State<Quiz> { // private class
       home: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 78, 13, 151),
-                Color.fromARGB(255, 107, 15, 168),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
+            color: Color.fromARGB(255, 255, 255, 255),
           ),
           child: screenWidget,
         ),

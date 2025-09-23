@@ -14,18 +14,17 @@ class ResultsScreen extends StatelessWidget {
   final void Function() onRestart;
   final List<String> chosenAnswers;
 
-  List<Map<String, Object>> get summaryData { // a getter
+  List<Map<String, Object>> get summaryData {
+    // a getter
     final List<Map<String, Object>> summary = [];
 
     for (var i = 0; i < chosenAnswers.length; i++) {
-      summary.add(
-        {
-          'question_index': i,
-          'question': questions[i].text,
-          'correct_answer': questions[i].answers[0],
-          'user_answer': chosenAnswers[i]
-        },
-      );
+      summary.add({
+        'question_index': i,
+        'question': questions[i].text,
+        'correct_answer': questions[i].answers[0],
+        'user_answer': chosenAnswers[i],
+      });
     }
 
     return summary;
@@ -33,14 +32,17 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      final numTotalQuestions = questions.length;
-      final numCorrectQuestions = summaryData
-      .where(
-        (data) => data['user_answer'] == data['correct_answer'], //arrow function, more concise that a longer return below
-      ).length;
-      // final numCorrectQuestions = summaryData.where((data) { 
-      // return data['user_answer'] == data['correct_answer'];
-      // }).length;
+    final numTotalQuestions = questions.length;
+    final numCorrectQuestions = summaryData
+        .where(
+          (data) =>
+              data['user_answer'] ==
+              data['correct_answer'], //arrow function, more concise that a longer return below
+        )
+        .length;
+    // final numCorrectQuestions = summaryData.where((data) {
+    // return data['user_answer'] == data['correct_answer'];
+    // }).length;
 
     return SizedBox(
       width: double.infinity,
@@ -52,27 +54,23 @@ class ResultsScreen extends StatelessWidget {
             Text(
               'You answered $numCorrectQuestions out of $numTotalQuestions questions correctly!',
               style: GoogleFonts.lato(
-                color: const Color.fromARGB(255, 230, 200, 253),
+                color: const Color.fromARGB(255, 0, 0, 0),
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
             QuestionsSummary(summaryData),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
             TextButton.icon(
               onPressed: onRestart, // resets the quiz
               style: TextButton.styleFrom(
-                foregroundColor: Colors.white,
+                foregroundColor: const Color.fromARGB(255, 0, 0, 0),
               ),
               icon: const Icon(Icons.refresh), //restart icon
               label: const Text('Restart Quiz!'),
-            )
+            ),
           ],
         ),
       ),

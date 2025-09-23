@@ -14,9 +14,7 @@ class SummaryItem extends StatelessWidget {
         itemData['user_answer'] == itemData['correct_answer'];
 
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 8,
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,22 +30,20 @@ class SummaryItem extends StatelessWidget {
                 Text(
                   itemData['question'] as String,
                   style: GoogleFonts.lato(
-                    color: Colors.white,
+                    color: const Color.fromARGB(255, 0, 0, 0),
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(
-                  height: 5,
+                const SizedBox(height: 5),
+                Text(
+                  itemData['user_answer'] as String,
+                  style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                 ),
-                Text(itemData['user_answer'] as String,
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 237, 232, 245),
-                    )),
-                Text(itemData['correct_answer'] as String,
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 56, 230, 209),
-                    )),
+                Text(
+                  itemData['correct_answer'] as String,
+                  style: const TextStyle(color: Color.fromARGB(255, 0, 255, 8)),
+                ),
               ],
             ),
           ),
