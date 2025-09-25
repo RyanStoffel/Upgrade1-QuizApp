@@ -16,6 +16,8 @@ class QuestionsScreen extends StatefulWidget {
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
   var currentQuestionIndex = 0;
+  double get progress => currentQuestionIndex / questions.length;
+  var totalQuestions = questions.length;
 
   void answerQuestion(String selectedAnswer) {
     widget.onSelectAnswer(selectedAnswer);
@@ -37,6 +39,18 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Text(
+              'Question #${currentQuestionIndex + 1} of $totalQuestions',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 40),
+            LinearProgressIndicator(value: progress),
+            SizedBox(height: 40),
             Text(
               currentQuestion.text,
               style: GoogleFonts.lato(
