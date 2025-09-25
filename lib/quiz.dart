@@ -68,6 +68,7 @@ class _QuizState extends State<Quiz> {
           child: screenWidget,
         ),
       ),
+      themeMode: ThemeMode.light,
     );
   }
 }
