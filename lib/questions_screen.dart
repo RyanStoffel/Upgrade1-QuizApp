@@ -49,7 +49,12 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 40),
-            LinearProgressIndicator(value: progress),
+            LinearProgressIndicator(
+              value: progress,
+              backgroundColor: Colors.grey,
+              color: Colors.blue,
+              borderRadius: BorderRadius.circular(10.0),
+            ),
             SizedBox(height: 40),
             Text(
               currentQuestion.text,

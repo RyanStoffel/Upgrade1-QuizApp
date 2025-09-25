@@ -9,9 +9,11 @@ class ResultsScreen extends StatelessWidget {
     super.key,
     required this.chosenAnswers,
     required this.onRestart,
+    required this.onHome,
   });
 
   final void Function() onRestart;
+  final void Function() onHome;
   final List<String> chosenAnswers;
 
   List<Map<String, Object>> get summaryData {
@@ -70,6 +72,14 @@ class ResultsScreen extends StatelessWidget {
               ),
               icon: const Icon(Icons.refresh), //restart icon
               label: const Text('Restart Quiz!'),
+            ),
+            TextButton.icon(
+              onPressed: onHome, // resets the quiz
+              style: TextButton.styleFrom(
+                foregroundColor: const Color.fromARGB(255, 0, 0, 0),
+              ),
+              icon: const Icon(Icons.home), //restart icon
+              label: const Text('Go back to home screen.'),
             ),
           ],
         ),
